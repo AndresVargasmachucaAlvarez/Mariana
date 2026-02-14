@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Together Days</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Tangerine', cursive;
+            background-image: url("https://i.pinimg.com/736x/69/55/25/6955253d6ef7a14cf2fd3e78169d547c.jpg"),
+            url("https://i.pinimg.com/1200x/b9/15/ae/b915ae9a4ac59f35915d4f74e4ead0c9.jpg");
+            background-repeat: repeat, repeat;
+            background-size: 400px, 400px;
+            background-position: 0 0 , 200px 200px;
+            background-color: #ffffff;
+        }
+        
+        .contenedor {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .columna-izquierda {
+            flex: 1;
+            background-image: inherit;
+            background-size: 400px, 400px;
+            background-position: 0 0, 200px 200px;
+        }
+        
+        .columna-central {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+        
+        .seccion-blanca {
+            background-color: rgba(255, 255, 255, 0.9);  
+            backdrop-filter: blur(2px);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 20px 40px 20px;
+            box-sizing: border-box;
+        }
+        
+        .seccion-transparente {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 20px 40px 20px;
+            box-sizing: border-box;
+        }
+        
+        .columna-derecha {
+            flex: 1;
+            background-image: inherit;
+            background-size: 400px, 400px;
+            background-position: 0 0, 200px 200px;
+        }
+        
+        h1 {
+            font-family: 'Tangerine', cursive;
+            font-weight: 700;
+            font-size: 120px;
+            color: #000000;  
+            text-align: center;
+            margin: 0 0 30px 0;  
+            padding: 40px 60px;
+            background-color: rgba(255, 255, 255, 0.6);  
+            border-radius: 80px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);  
+            border: 2px solid #000000;  
+        }
+        
+        /* Estilo del poema */
+        .poema {
+            font-family: 'Tangerine', cursive;
+            color: #000000;
+            text-align: center;
+            margin: 30px 0 40px 0;
+            max-width: 800px;
+            line-height: 1.4;
+        }
+        
+        .titulo-poema {
+            font-weight: 700;
+            font-size: 70px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .autor-poema {
+            font-weight: 400;
+            font-size: 50px;
+            margin-bottom: 40px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        .verso {
+            font-weight: 400;
+            font-size: 45px;
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+        
+        .verso-final {
+            font-weight: 400;
+            font-size: 45px;
+            margin: 25px 0 15px 0;
+            line-height: 1.5;
+        }
+        
+        .contador {
+            font-family: 'Tangerine', cursive;
+            font-size: 50px;
+            color: #000000;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 30px 50px;
+            border-radius: 60px;
+            border: 2px solid #000000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+        
+        .numero {
+            font-weight: 700;
+            font-size: 70px;
+            color: #000000;
+        }
+        
+        .etiqueta {
+            font-size: 40px;
+            color: #000000;
+            margin: 0 5px;
+        }
+        
+        .mosaico {
+            width: 100%;
+            max-width: 700px;
+            margin: 40px 0 30px 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 8px;
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 8px;
+            border-radius: 16px;
+            aspect-ratio: 3/2;
+        }
+        
+        .foto-mosaico {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            aspect-ratio: 1/1;
+        }
+        
+        .foto-mosaico img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .dedicatoria {
+            font-family: 'Tangerine', cursive;
+            font-size: 45px;
+            color: #000000;
+            text-align: center;
+            margin: 30px 0 20px 0;
+            max-width: 800px;
+            line-height: 1.5;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+        
+        .imagen-audio {
+            display: block;
+            margin: 20px auto 0 auto;
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            background: none;
+            border: none;
+            box-shadow: none;
+            outline: none;
+        }
+        
+        .imagen-audio:hover {
+            transform: scale(1.05);
+        }
+        .punto-negro {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #000000;
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.2s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .punto-negro:hover {
+            transform: scale(1.1);
+        }
+        
+        #audio-final, #cancion-principal {
+            display: none;
+        }
+        
+        p, .texto-secundario {
+            font-family: 'Tangerine', cursive;
+            color: #000000;
+            font-size: 40px;
+        }
+        
+        @media (max-width: 800px) {
+            .contenedor {
+                flex-direction: column;
+            }
+            
+            .columna-izquierda, .columna-derecha {
+                min-height: 150px;
+            }
+            
+            h1 {
+                font-size: 80px;
+                padding: 30px 40px;
+            }
+            
+            .titulo-poema {
+                font-size: 55px;
+            }
+            
+            .autor-poema {
+                font-size: 40px;
+            }
+            
+            .verso, .verso-final {
+                font-size: 35px;
+            }
+            
+            .contador {
+                font-size: 35px;
+                padding: 20px 30px;
+            }
+            
+            .numero {
+                font-size: 50px;
+            }
+            
+            .etiqueta {
+                font-size: 30px;
+            }
+            
+            .mosaico {
+                max-width: 100%;
+                gap: 5px;
+            }
+            
+            .dedicatoria {
+                font-size: 35px;
+                margin: 25px 0 15px 0;
+            }
+            
+            .imagen-audio {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .seccion-blanca, .seccion-transparente {
+                padding: 20px 15px;
+            }
+            
+            .punto-negro {
+                width: 35px;
+                height: 35px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="columna-izquierda"></div>
+        
+        <div class="columna-central">
+            <div class="seccion-blanca">
+                <h1>Together days</h1>
+                
+                <div class="contador">
+                    <span class="numero" id="dias">0</span> <span class="etiqueta">días</span>
+                    <span class="numero" id="horas">0</span> <span class="etiqueta">horas</span>
+                    <span class="numero" id="minutos">0</span> <span class="etiqueta">minutos</span>
+                    <span class="numero" id="segundos">0</span> <span class="etiqueta">segundos</span>
+                </div>
+                
+                <div class="poema">
+                    <div class="titulo-poema">Acuérdate de mí</div>
+                    <div class="autor-poema">- Lord Byron</div>
+                    
+                    <div class="verso">Llora en silencio mi alma solitaria,</div>
+                    <div class="verso">excepto cuando está mi corazón</div>
+                    <div class="verso">unido al tuyo en celestial alianza</div>
+                    <div class="verso">de mutuo suspirar y mutuo amor.</div>
+                    
+                    <div class="verso" style="margin-top: 25px;">Es la llama de mi alma cual lumbrera,</div>
+                    <div class="verso">que brilla en el recinto sepulcral:</div>
+                    <div class="verso">casi extinta, invisible, pero eterna…</div>
+                    <div class="verso">ni la muerte la puede aniquilar.</div>
+                    
+                    <div class="verso" style="margin-top: 25px;">¡Acuérdate de mí!… Cerca a mi tumba</div>
+                    <div class="verso">no pases, no, sin darme una oración;</div>
+                    <div class="verso-final">para mi alma no habrá mayor tortura</div>
+                    <div class="verso-final">que el saber que me olvida tu corazón.</div>
+                </div>
+                
+                <div class="mosaico">
+                    <div class="foto-mosaico">
+                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&auto=format" alt="Foto 1">
+                    </div>
+                    <div class="foto-mosaico">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&auto=format" alt="Foto 2">
+                    </div>
+                    <div class="foto-mosaico">
+                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&auto=format" alt="Foto 3">
+                    </div>
+                    
+                    <!-- Fila 2 -->
+                    <div class="foto-mosaico">
+                        <img src="https://images.unsplash.com/photo-1494790108777-7669c7cd5d63?w=400&auto=format" alt="Foto 4">
+                    </div>
+                    <div class="foto-mosaico">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format" alt="Foto 5">
+                    </div>
+                    <div class="foto-mosaico">
+                        <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&auto=format" alt="Foto 6">
+                    </div>
+                </div>
+                
+                <div class="dedicatoria">
+                    agradecido de pasar una parte de mi existencia<br>
+                    junto a un alma tan increíble como la tuya
+                </div>
+            </div>
+            
+            <div class="seccion-transparente">
+                <img src="https://i.pinimg.com/736x/14/73/91/147391b5e5a07b0c9c2a202a245970f8.jpg" 
+                     alt="Reproducir audio" 
+                     class="imagen-audio"
+                     onclick="reproducirAudio()"
+                     title="Haz clic para escuchar">
+                
+                <audio id="audio-final">
+                    <source src="tu-audio-dedicatoria.mp3" type="audio/mpeg">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+        </div>
+        
+        <div class="columna-derecha"></div>
+    </div>
+    
+    <audio id="cancion-principal" autoplay loop>
+       
+        <source src="https://archive.org/download/him-close-to-the-flame/HIM%20-%20Close%20to%20the%20Flame.mp3" type="audio/mpeg">
+        <source src="https://cdn.jsdelivr.net/gh/captbaritone/webamp@43434d82cfe0e37286dbbe0666072dc3190a83bc/mp3/llama-2.91.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    
+    <div id="punto-negro" class="punto-negro" style="display: none;" onclick="activarCancion()"></div>
+    
+    <script>
+        const fechaInicial = new Date(2023, 7, 13, 0, 0, 0); 
+        
+        function actualizarContador() {
+            const ahora = new Date();
+            const diferencia = ahora - fechaInicial;
+            
+            const segundos = Math.floor(diferencia / 1000);
+            const minutos = Math.floor(segundos / 60);
+            const horas = Math.floor(minutos / 60);
+            const dias = Math.floor(horas / 24);
+            
+            document.getElementById('dias').textContent = dias;
+            document.getElementById('horas').textContent = horas % 24;
+            document.getElementById('minutos').textContent = minutos % 60;
+            document.getElementById('segundos').textContent = segundos % 60;
+        }
+        
+        setInterval(actualizarContador, 1000);
+        actualizarContador();
+        
+        function reproducirAudio() {
+            const audio = document.getElementById('audio-final');
+            audio.play().catch(error => {
+                console.log("Error al reproducir audio:", error);
+            });
+        }
+        
+        function activarCancion() {
+            const cancion = document.getElementById('cancion-principal');
+            cancion.play().then(() => {
+          
+                document.getElementById('punto-negro').style.display = 'none';
+            }).catch(error => {
+                console.log("Error al reproducir:", error);
+            });
+        }
+        
+        window.addEventListener('load', function() {
+            const cancion = document.getElementById('cancion-principal');
+            cancion.play().catch(error => {
+                console.log("Navegador bloqueó autoplay. Mostrando punto negro.");
+                document.getElementById('punto-negro').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
