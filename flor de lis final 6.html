@@ -333,26 +333,27 @@
                     <div class="verso-final">que el saber que me olvida tu corazón.</div>
                 </div>
                 
+                <!-- 🖼️ MOSAICO CON TUS 6 FOTOS -->
                 <div class="mosaico">
                     <div class="foto-mosaico">
-                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&auto=format" alt="Foto 1">
+                        <img src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/1%20de%206.jpeg" alt="Foto 1">
                     </div>
                     <div class="foto-mosaico">
-                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&auto=format" alt="Foto 2">
+                        <img src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/2%20de%206.jpeg" alt="Foto 2">
                     </div>
                     <div class="foto-mosaico">
-                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&auto=format" alt="Foto 3">
+                        <img src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/3%20de%206.jpeg" alt="Foto 3">
                     </div>
                     
                     <!-- Fila 2 -->
                     <div class="foto-mosaico">
-                        <img src="https://images.unsplash.com/photo-1494790108777-7669c7cd5d63?w=400&auto=format" alt="Foto 4">
+                        <img src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/4%20de%206.jpeg" alt="Foto 4">
                     </div>
                     <div class="foto-mosaico">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format" alt="Foto 5">
+                        <img src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/5%20de%206.jpeg" alt="Foto 5">
                     </div>
                     <div class="foto-mosaico">
-                        <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&auto=format" alt="Foto 6">
+                        <img src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/6%20de%206.jpeg" alt="Foto 6">
                     </div>
                 </div>
                 
@@ -369,8 +370,9 @@
                      onclick="reproducirAudio()"
                      title="Haz clic para escuchar">
                 
+                <!-- 🎵 AUDIO DEL PNG FINAL (corregido) -->
                 <audio id="audio-final">
-                    <source src="tu-audio-dedicatoria.mp3" type="audio/mpeg">
+                    <source src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/AUDIO-FINAL-DEDICATORIA-mp4.mp3" type="audio/mpeg">
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
@@ -379,10 +381,9 @@
         <div class="columna-derecha"></div>
     </div>
     
+    <!-- 🎵 CANCIÓN PRINCIPAL (corregida) -->
     <audio id="cancion-principal" autoplay loop>
-       
-        <source src="https://archive.org/download/him-close-to-the-flame/HIM%20-%20Close%20to%20the%20Flame.mp3" type="audio/mpeg">
-        <source src="https://cdn.jsdelivr.net/gh/captbaritone/webamp@43434d82cfe0e37286dbbe0666072dc3190a83bc/mp3/llama-2.91.mp3" type="audio/mpeg">
+        <source src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/Close%20To%20The%20Flame%20HIM.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
     
@@ -419,7 +420,6 @@
         function activarCancion() {
             const cancion = document.getElementById('cancion-principal');
             cancion.play().then(() => {
-          
                 document.getElementById('punto-negro').style.display = 'none';
             }).catch(error => {
                 console.log("Error al reproducir:", error);
