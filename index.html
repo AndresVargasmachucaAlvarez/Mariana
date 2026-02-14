@@ -82,7 +82,6 @@
             border: 2px solid #000000;  
         }
         
-        /* Estilo del poema */
         .poema {
             font-family: 'Tangerine', cursive;
             color: #000000;
@@ -333,7 +332,6 @@
                     <div class="verso-final">que el saber que me olvida tu corazón.</div>
                 </div>
                 
-                <!-- 🖼️ MOSAICO CON TUS 6 FOTOS -->
                 <div class="mosaico">
                     <div class="foto-mosaico">
                         <img src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/1%20de%206.jpeg" alt="Foto 1">
@@ -345,7 +343,7 @@
                         <img src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/3%20de%206.jpeg" alt="Foto 3">
                     </div>
                     
-                    <!-- Fila 2 -->
+         
                     <div class="foto-mosaico">
                         <img src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/4%20de%206.jpeg" alt="Foto 4">
                     </div>
@@ -370,7 +368,6 @@
                      onclick="reproducirAudio()"
                      title="Haz clic para escuchar">
                 
-                <!-- 🎵 AUDIO DEL PNG FINAL (corregido) -->
                 <audio id="audio-final">
                     <source src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/AUDIO-FINAL-DEDICATORIA-mp4.mp3" type="audio/mpeg">
                     Tu navegador no soporta el elemento de audio.
@@ -381,7 +378,6 @@
         <div class="columna-derecha"></div>
     </div>
     
-    <!-- 🎵 CANCIÓN PRINCIPAL (corregida) -->
     <audio id="cancion-principal" autoplay loop>
         <source src="https://github.com/AndresVargasmachucaAlvarez/Mariana/raw/5202809517fe78c9c1ac9de62d519af0e87b5d69/Close%20To%20The%20Flame%20HIM.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
@@ -389,50 +385,66 @@
     
     <div id="punto-negro" class="punto-negro" style="display: none;" onclick="activarCancion()"></div>
     
-    <script>
-        const fechaInicial = new Date(2023, 7, 13, 0, 0, 0); 
+   <script>
+    const fechaInicial = new Date(2023, 7, 13, 0, 0, 0); 
+    
+    function actualizarContador() {
+        const ahora = new Date();
+        const diferencia = ahora - fechaInicial;
         
-        function actualizarContador() {
-            const ahora = new Date();
-            const diferencia = ahora - fechaInicial;
-            
-            const segundos = Math.floor(diferencia / 1000);
-            const minutos = Math.floor(segundos / 60);
-            const horas = Math.floor(minutos / 60);
-            const dias = Math.floor(horas / 24);
-            
-            document.getElementById('dias').textContent = dias;
-            document.getElementById('horas').textContent = horas % 24;
-            document.getElementById('minutos').textContent = minutos % 60;
-            document.getElementById('segundos').textContent = segundos % 60;
-        }
+        const segundos = Math.floor(diferencia / 1000);
+        const minutos = Math.floor(segundos / 60);
+        const horas = Math.floor(minutos / 60);
+        const dias = Math.floor(horas / 24);
         
-        setInterval(actualizarContador, 1000);
-        actualizarContador();
-        
-        function reproducirAudio() {
-            const audio = document.getElementById('audio-final');
-            audio.play().catch(error => {
-                console.log("Error al reproducir audio:", error);
-            });
-        }
-        
-        function activarCancion() {
-            const cancion = document.getElementById('cancion-principal');
-            cancion.play().then(() => {
-                document.getElementById('punto-negro').style.display = 'none';
-            }).catch(error => {
-                console.log("Error al reproducir:", error);
-            });
-        }
-        
-        window.addEventListener('load', function() {
-            const cancion = document.getElementById('cancion-principal');
-            cancion.play().catch(error => {
-                console.log("Navegador bloqueó autoplay. Mostrando punto negro.");
-                document.getElementById('punto-negro').style.display = 'block';
-            });
+        document.getElementById('dias').textContent = dias;
+        document.getElementById('horas').textContent = horas % 24;
+        document.getElementById('minutos').textContent = minutos % 60;
+        document.getElementById('segundos').textContent = segundos % 60;
+    }
+    
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+    
+    const cancion = document.getElementById('cancion-principal');
+    const audioFinal = document.getElementById('audio-final');
+    
+    cancion.volume = 1.0;
+    audioFinal.volume = 1.0;
+    
+    audioFinal.addEventListener('play', function() {
+        cancion.volume = 0.2; 
+    });
+    
+    audioFinal.addEventListener('ended', function() {
+        cancion.volume = 1.0; 
+    });
+    
+    audioFinal.addEventListener('pause', function() {
+        cancion.volume = 1.0; 
+    });
+    
+    window.addEventListener('load', function() {
+        cancion.play().catch(error => {
+            console.log("Navegador bloqueó autoplay. Mostrando punto negro.");
+            document.getElementById('punto-negro').style.display = 'block';
         });
-    </script>
+    });
+    
+    function reproducirAudio() {
+        audioFinal.play().catch(error => {
+            console.log("Error al reproducir audio:", error);
+        });
+    }
+    
+    function activarCancion() {
+        cancion.play().then(() => {
+            document.getElementById('punto-negro').style.display = 'none';
+        }).catch(error => {
+            console.log("Error al reproducir:", error);
+        });
+    }
+</script>
 </body>
 </html>
+
